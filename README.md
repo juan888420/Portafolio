@@ -12,6 +12,6 @@ Incluye proyectos, diseño UI y prácticas con SvelteKit.
 
 ## Preview
 
-![Portafolio](images/captura_portafolio)
+![Portafolio](images/captura_portafolio.png)
 
 🌐 Live Demo: https://portafoliodejuanpablo.vercel.app/
