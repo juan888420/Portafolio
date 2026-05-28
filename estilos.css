@@ -51,10 +51,15 @@ section {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: var(--fs-body);
   line-height: 1.6;
   padding: 20px;
+}
+
+:where(input, textarea, button) {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 /* Header and navigation */
@@ -550,7 +555,7 @@ form {
   max-width: 400px;
 }
 
-input, textarea {
+:is(input, textarea) {
   padding: 12px 14px;
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 6px;
@@ -562,7 +567,7 @@ input, textarea {
     background 0.3s ease;
 }
 
-input:focus, textarea:focus {
+:is(input, textarea):focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow:  0 0 0 3px rgba(0, 153, 255, 0.5);
@@ -645,8 +650,7 @@ legend {
   transition: 0.3s;
 }
 
-.footer-nav a,
-.footer-contact a {
+:is(.footer-nav, .footer-contact) a{
   display: inline-block;
   padding: 2px 8px;
   border-radius: 8px;
@@ -660,8 +664,7 @@ legend {
   color: var(--primary-color);
 }
 
-.footer-nav a::after,
-.footer-contact a::after {
+:is(.footer-nav, footer-contact) a::after {
   content: '';
   position: absolute;
   left: 0;
@@ -675,14 +678,12 @@ legend {
     transform 0.4s cubic-bezier(0.22,1,0.36,1);
 }
 
-.footer-nav a:hover::after,
-.footer-contact a:hover::after {
+:is(.footer-nav, .footer-contact)a:hover::after {
   transform: scaleX(1);
   transform-origin: center;
 }
 
-.footer-nav a:focus-visible,
-.footer-contact a:focus-visible {
+:is(.footer-nav, .footer-contact) a:focus-visible {
   box-shadow:
     0 0 0 4px rgba(59,130,246,0.2);
   background: var(--primary-color);
