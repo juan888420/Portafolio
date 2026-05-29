@@ -7,9 +7,17 @@
 
 /* Design tokens */
 :root {
+  color-scheme: light;
+
   --primary-color: #09f;
-  --dark-color: #333;
-  --light-color: #fff;
+  --text-color: #333;
+  --surface-color: #fff;
+  --field-color: #fff;
+  --border-color: rgba(0,0,0,0.14);
+  --on-accent-color: #fff;
+  --footer-bg: #333;
+  --dark-color: var(--text-color);
+  --light-color: var(--surface-color);
   --gray-color: #eee;
   --background-color: #f5f5f5;
   --secundary-color: #6f00ff;
@@ -33,6 +41,16 @@
   --space-3: 16px;
   --space-4: 24px;
 
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+
+  --transition-smooth:
+    0.4s cubic-bezier(0.22,1,0.36,1);
+
 }
 
 /* Global layout */
@@ -55,6 +73,8 @@ body {
   font-size: var(--fs-body);
   line-height: 1.6;
   padding: 20px;
+  background: var(--background-color);
+  color: var(--text-color);
 }
 
 :where(input, textarea, button) {
@@ -109,7 +129,7 @@ nav a {
   transform: scaleX(0);
   transform-origin: right;
   transition:
-    transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    transform var(--transition-smooth);
 }
 nav a:hover {
   color: var(--primary-color);
@@ -121,7 +141,7 @@ nav a:hover::after {
 }
 
 .nav a:focus-visible {
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
   background: var(--primary-color);
 }
@@ -188,8 +208,8 @@ nav a:hover::after {
   align-items: center;
   position: relative;
   padding: 10px 10px;
-  border-radius: 20px;
-  color: var(--light-color);
+  border-radius: var(--radius-lg);
+  color: var(--on-accent-color);
   text-align: center;
   background: 
   linear-gradient(
@@ -205,7 +225,7 @@ nav a:hover::after {
   width: 100%;
   height: 300px;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
@@ -218,7 +238,7 @@ nav a:hover::after {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  color: var(--light-color);
+  color: var(--on-accent-color);
   text-align: center;
   z-index: 1;
   animation: float 4s ease-in-out infinite;
@@ -251,11 +271,12 @@ nav a:hover::after {
   flex: 1 1 300px;
   border: 1px solid #ccc;
   padding:16px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: var(--light-color);
+  color: var(--text-color);
   transition: 
-    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1),
-    box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    transform var(--transition-smooth),
+    box-shadow var(--transition-smooth);
 }
 
 .proyectos article h3{
@@ -280,7 +301,7 @@ nav a:hover::after {
   opacity: 0;
   display: inline-block;
   background: var(--primary-color);
-  color: var(--light-color);
+  color: var(--on-accent-color);
   padding: 4px 8px;
   font-size: var(--fs-small);
   border-radius: 999px;
@@ -288,7 +309,7 @@ nav a:hover::after {
   vertical-align: middle;
   transform: translateX(200%);
   transition:
-  transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  transform var(--transition-smooth);
 }
 
 .ribbon {
@@ -296,14 +317,14 @@ nav a:hover::after {
   top: 12px;
   right: -30px;
   background: var(--primary-color);
-  color: var(--light-color);
+  color: var(--on-accent-color);
   padding: 6px 40px;
   text-align: center;
   font-size: var(--fs-small);
   font-weight: bold;
   transform: translateX(200%) rotate(45deg);
   transition:
-  transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  transform var(--transition-smooth);
 }
 
 .proyectos article:hover .ribbon {
@@ -325,7 +346,7 @@ nav a:hover::after {
 
 .experiencia img {
   width: 700px;
-  border-radius: 15px;
+  border-radius: var(--radius-lg);
 }
 
 .experiencia-content {
@@ -339,7 +360,7 @@ nav a:hover::after {
 .habilidades {
   background: var(--background-color);
   padding: 30px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   text-align: center;
   margin-bottom: 50px;
 }
@@ -354,13 +375,14 @@ nav a:hover::after {
   position: relative;
   overflow: hidden;
   background: var(--light-color);
+  color: var(--text-color);
   padding: 20px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   transition: 
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.3s ease;
+    transform var(--transition-smooth),
+    box-shadow var(--transition-smooth),
+    background var(--transition-normal);
 }
 
 /*
@@ -393,7 +415,7 @@ nav a:hover::after {
       transparent 70%
     );
 
-  transition: left 0.7s ease;
+  transition: left var(--transition-smooth);
 }
 
 .grid-card h3 {
@@ -406,6 +428,7 @@ nav a:hover::after {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
   background: var(--primary-color);
+  color: var(--on-accent-color);
 }
 
 .grid-card:hover::before {
@@ -414,6 +437,7 @@ nav a:hover::after {
 
 .grid-card:nth-child(even) {
   background: var(--secundary-color);
+  color: var(--on-accent-color);
 }
 
 
@@ -431,12 +455,13 @@ nav a:hover::after {
 
 .service-card {
   padding: 20px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background: var(--light-color);
+  color: var(--text-color);
   border: 1px solid rgba(0,0,0,0.08);
   transition:
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.3s ease;
+    transform var(--transition-smooth),
+    border-color var(--transition-normal);
 }
 
 .service-card:hover {
@@ -486,12 +511,13 @@ nav a:hover::after {
 
 .box {
   background: var(--light-color);
+  color: var(--text-color);
   padding: 30px;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   transition:
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transform var(--transition-smooth),
+    box-shadow var(--transition-smooth);
 }
 
 .box:hover {
@@ -557,14 +583,16 @@ form {
 
 :is(input, textarea) {
   padding: 12px 14px;
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
   width: 100%;
   box-sizing: border-box;
+  background: var(--field-color);
+  color: var(--text-color);
   transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease;
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal),
+    background var(--transition-normal);
 }
 
 :is(input, textarea):focus {
@@ -584,12 +612,12 @@ button {
   padding: 12px 20px;
   border: none;
   background: var(--primary-color);
-  color: var(--light-color);
-  border-radius: 6px;
+  color: var(--on-accent-color);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: 
-    background 0.3s ease,
-    transform 0.3s ease;
+    background var(--transition-normal),
+    transform var(--transition-normal);
 }
 
 /* Keyboard focus state */
@@ -609,13 +637,14 @@ button:active {
 }
 
 fieldset {
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background: rgba(255,255,255,0.6);
+  background: var(--surface-color);
+  color: var(--text-color);
   backdrop-filter: blur(10px);
 }
 
@@ -631,8 +660,8 @@ legend {
 
 /* Footer */
 .footer {
-  background: var(--dark-color);
-  color: var(--light-color);
+  background: var(--footer-bg);
+  color: var(--on-accent-color);
   padding: 60px 20px 30px;
 }
 
@@ -647,16 +676,16 @@ legend {
 .footer a {
   color: var(--gray-color);
   text-decoration: none;
-  transition: 0.3s;
+  transition: color var(--transition-normal);
 }
 
 :is(.footer-nav, .footer-contact) a{
   display: inline-block;
   padding: 2px 8px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   transition:
-    background 0.3s ease,
-    box-shadow 0.3s ease;
+    background var(--transition-normal),
+    box-shadow var(--transition-normal);
   position: relative;
 }
 
@@ -675,7 +704,7 @@ legend {
   transform: scaleX(0);
   transform-origin: right;
   transition:
-    transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    transform var(--transition-smooth);
 }
 
 :is(.footer-nav, .footer-contact)a:hover::after {
@@ -763,5 +792,24 @@ legend {
   100% {
     transform: translate(-50%, -50%) translateY(0);
   }
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+  :root {
+    color-scheme: dark;
+
+    --text-color: #f5f5f5;
+    --surface-color: #1a1a1a;
+    --field-color: #242424;
+    --border-color: rgba(255,255,255,0.28);
+    --gray-color: #bdbdbd;
+    --background-color: #121212;
+    --footer-bg: #0f0f0f;
+    --glass-bg: rgba(18,18,18,0.75);
+    --glass-border: rgba(255,255,255,0.12);
+  }
+
 }
 
