@@ -23,6 +23,11 @@
   --secundary-color: #a855f7;
   --glass-bg: rgba(255,255,255,0.7);
   --glass-border: rgba(255,255,255,0.2);
+  --hero-surface: rgba(255,255,255,0.84);
+  --hero-text: #243041;
+  --hero-muted: #475569;
+  --hero-border: rgba(15,23,42,0.14);
+  --card-bg: rgba(255,255,255,0.68);
 
   --fs-h1: clamp(2.3rem, 4vw, 3.5rem);
   --fs-h2: clamp(1.8rem, 3vw, 2.8rem);
@@ -250,10 +255,11 @@ nav a:hover::after {
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+  color: var(--hero-text);
   background:
     linear-gradient(
-      var(--background-color),
-      var(--background-color)
+      var(--hero-surface),
+      var(--hero-surface)
     ) padding-box,
 
     conic-gradient(
@@ -291,7 +297,7 @@ nav a:hover::after {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--primary-color);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--hero-border);
 }
 
 .hero-role::before {
@@ -310,9 +316,9 @@ nav a:hover::after {
   max-width: 60ch;
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--gray-color);
+  color: var(--hero-muted);
   padding-left: 20px;
-  border-left: 2px solid rgba(255,255,255,0.1);
+  border-left: 2px solid var(--hero-border);
 }
 
 .hero-contact {
@@ -328,7 +334,7 @@ nav a:hover::after {
   gap: 8px;
   padding: 12px 18px;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--hero-border);
   background: var(--card-bg);
   color: inherit;
   text-decoration: none;
@@ -890,14 +896,32 @@ legend {
   }
 
   .hero-contact {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(72px, 1fr));
     width: 100%;
+    max-width: 220px;
+    gap: 12px;
   }
 
   .hero-contact a,
   .hero-contact span {
     width: 100%;
+    min-height: 58px;
     justify-content: center;
+    padding: 14px;
+    font-size: 0;
+  }
+
+  .hero-contact a:nth-child(odd):last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 12px) / 2);
+  }
+
+  .hero-contact a svg {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
   }
 
 }
@@ -988,6 +1012,11 @@ legend {
     --footer-bg: #0f0f0f;
     --glass-bg: rgba(18,18,18,0.75);
     --glass-border: rgba(255,255,255,0.12);
+    --hero-surface: rgba(18,18,18,0.92);
+    --hero-text: #f5f5f5;
+    --hero-muted: #d4d4d8;
+    --hero-border: rgba(255,255,255,0.16);
+    --card-bg: rgba(255,255,255,0.06);
   }
 
 }
