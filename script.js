@@ -4,4 +4,5 @@ const nav = document.querySelector('.nav');
 btn.addEventListener('click', () => {
   nav.classList.toggle('active');
   btn.classList.toggle('active');
+  btn.setAttribute('aria-expanded', btn.classList.contains('active'));
 });
